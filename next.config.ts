@@ -7,7 +7,6 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "placehold.co" },
     ],
   },
-  serverExternalPackages: ["pg", "pg-cloudflare", "@prisma/client", "prisma"],
 };
 
 export default nextConfig;
