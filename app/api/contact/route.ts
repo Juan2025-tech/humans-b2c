@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma }        from "@/lib/prisma";
+import { sql } from "@/lib/db";
 import { contactSchema } from "@/lib/validations";
 import { rateLimit, ipKey } from "@/lib/rateLimit";
 import { sendContactConfirmation } from "@/lib/email";
@@ -40,9 +40,11 @@ export async function POST(req: Request) {
   const ip_hash = await hashIP(ip);
 
   // 3. Guardar en BD
-  await prisma.contactMessage.create({
-    data: { nombre, email, mensaje, ip_hash, rgpd: true },
-  });
+  await sql(
+    `INSERT INTO "ContactMessage" (id, nombre, email, mensaje, ip_hash, rgpd)
+     VALUES ($1,$2,$3,$4,$5,$6)`,
+    [crypto.randomUUID(), nombre, email, mensaje, ip_hash, true]
+  );
 
   // 4. Notificaciones en paralelo
   void Promise.allSettled([

@@ -1,5 +1,5 @@
 import { auth }    from "@/auth";
-import { prisma }  from "@/lib/prisma";
+import { sql, WaitlistRow } from "@/lib/db";
 import { redirect } from "next/navigation";
 import { LeadsTable } from "./LeadsTable";
 
@@ -18,10 +18,11 @@ export default async function LeadsPage() {
   const session = await auth();
   if (!session) redirect("/admin/login");
 
-  const [leads, total] = await Promise.all([
-    prisma.waitlist.findMany({ orderBy: { createdAt: "desc" } }),
-    prisma.waitlist.count(),
+  const [leads, countRows] = await Promise.all([
+    sql<WaitlistRow>(`SELECT * FROM "Waitlist" ORDER BY "createdAt" DESC`),
+    sql<{ count: number }>(`SELECT COUNT(*)::int AS count FROM "Waitlist"`),
   ]);
+  const total = countRows[0].count;
 
   const bySource = Object.entries(
     leads.reduce<Record<string, number>>((acc, l) => {

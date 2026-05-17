@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth }         from "@/auth";
-import { prisma }       from "@/lib/prisma";
+import { sql, WaitlistRow } from "@/lib/db";
 import { z }            from "zod";
 
 async function requireAdmin() {
@@ -26,10 +26,23 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ error: "Datos incorrectos" }, { status: 422 });
   }
   const { id, estado, notas } = parsed.data;
-  const lead = await prisma.waitlist.update({
-    where: { id },
-    data:  { ...(estado && { estado }), ...(notas !== undefined && { notas }) },
-  });
+  const setParts: string[] = [];
+  const values: unknown[] = [id];
+  if (estado) {
+    values.push(estado);
+    setParts.push(`estado = $${values.length}`);
+  }
+  if (notas !== undefined) {
+    values.push(notas);
+    setParts.push(`notas = $${values.length}`);
+  }
+  if (!setParts.length) {
+    return NextResponse.json({ error: "Nada que actualizar" }, { status: 400 });
+  }
+  const [lead] = await sql<WaitlistRow>(
+    `UPDATE "Waitlist" SET ${setParts.join(", ")} WHERE id = $1 RETURNING *`,
+    values
+  );
   return NextResponse.json({ success: true, lead });
 }
 
@@ -41,9 +54,9 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const format           = searchParams.get("format");
 
-  const leads = await prisma.waitlist.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  const leads = await sql<WaitlistRow>(
+    `SELECT * FROM "Waitlist" ORDER BY "createdAt" DESC`
+  );
 
   if (format === "csv") {
     const header = "id,nombre,email,telefono,para_quien,plan_interes,fuente,utm_medium,estado,notas,createdAt\n";
