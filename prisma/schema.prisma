@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Waitlist {
+  id           String  @id @default(cuid())
+  nombre       String
+  email        String  @unique
+  telefono     String?
+  para_quien   String
+  plan_interes String?
+
+  // Trazabilidad de origen
+  fuente       String?
+  utm_medium   String?
+  utm_campaign String?
+  referrer     String?
+  ip_hash      String?
+
+  // CRM del fundador
+  estado String  @default("nuevo")
+  notas  String?
+
+  rgpd    Boolean
+  rgpd_at DateTime @default(now())
+
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([fuente])
+  @@index([createdAt])
+}
+
+model ContactMessage {
+  id      String  @id @default(cuid())
+  nombre  String
+  email   String
+  mensaje String
+  ip_hash String?
+  leido   Boolean @default(false)
+  rgpd    Boolean
+
+  createdAt DateTime @default(now())
+}
