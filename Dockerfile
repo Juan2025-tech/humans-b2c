@@ -1,7 +1,9 @@
-FROM node:22-alpine AS base
+FROM node:22-slim AS base
 
 FROM base AS deps
-RUN apk add --no-cache libc6-compat
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY package.json package-lock.json ./
 COPY scripts/ ./scripts/
@@ -18,7 +20,7 @@ FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs && \
-    adduser  --system --uid 1001 nextjs
+    adduser  --system --uid 1001 nextjs --ingroup nodejs --no-create-home
 
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
