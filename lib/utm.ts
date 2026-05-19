@@ -6,14 +6,19 @@ export interface UTMParams {
 }
 
 export function extractUTM(req: Request): UTMParams {
-  const url      = new URL(req.url);
-  const referer  = req.headers.get("referer");
-  const referrer = referer ? new URL(referer).hostname : null;
+  let searchParams = new URLSearchParams();
+  try { searchParams = new URL(req.url).searchParams; } catch { /* url relativa o inválida */ }
+
+  const referer = req.headers.get("referer");
+  let referrer: string | null = null;
+  if (referer) {
+    try { referrer = new URL(referer).hostname; } catch { /* referer relativo o inválido */ }
+  }
 
   return {
-    fuente:       url.searchParams.get("utm_source"),
-    utm_medium:   url.searchParams.get("utm_medium"),
-    utm_campaign: url.searchParams.get("utm_campaign"),
+    fuente:       searchParams.get("utm_source"),
+    utm_medium:   searchParams.get("utm_medium"),
+    utm_campaign: searchParams.get("utm_campaign"),
     referrer,
   };
 }

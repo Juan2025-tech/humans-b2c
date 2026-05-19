@@ -1,6 +1,4 @@
-import { resend, FOUNDER } from "@/lib/email";
-
-// resend() returns the lazy Resend instance
+import { sendMail, FOUNDER } from "@/lib/email";
 
 interface LeadNotification {
   nombre:    string;
@@ -24,8 +22,7 @@ async function sendFounderEmail(
   lead: LeadNotification,
   label: string,
 ): Promise<void> {
-  await resend().emails.send({
-    from:    `HUMANS Leads <${FOUNDER()}>`,
+  await sendMail({
     to:      FOUNDER(),
     subject: `🔔 Nuevo lead #${lead.position}: ${lead.nombre} (${label})`,
     html: `
