@@ -10,9 +10,9 @@ import { FAQ_ITEMS } from "@/content/faq.config";
 
 export function FAQ() {
   return (
-    <section className="bg-dark-bg py-20 sm:py-24">
+    <section className="bg-gradient-to-b from-white to-ice-blue py-20 sm:py-24">
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-10">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-text-primary text-center mb-10">
           Preguntas frecuentes
         </h2>
 
@@ -21,12 +21,12 @@ export function FAQ() {
             <AccordionItem
               key={i}
               value={i}
-              className="bg-dark-card border border-dark-border rounded-xl px-5 overflow-hidden"
+              className="bg-ice-blue border border-slate-200 rounded-xl px-5 overflow-hidden"
             >
-              <AccordionTrigger className="text-white font-semibold text-sm text-left py-4 hover:no-underline hover:text-brand-secondary transition-colors">
+              <AccordionTrigger className="text-text-primary font-semibold text-sm text-left py-4 hover:no-underline hover:text-brand-primary transition-colors">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-slate-400 text-sm leading-relaxed pb-4">
+              <AccordionContent className="text-slate-600 text-sm leading-relaxed pb-4">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

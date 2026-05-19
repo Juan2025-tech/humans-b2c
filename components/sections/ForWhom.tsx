@@ -34,7 +34,7 @@ const CARDS = [
 
 export function ForWhom() {
   return (
-    <section id="para-quien" className="bg-dark-card py-20 sm:py-24">
+    <section id="para-quien" className="bg-gradient-to-br from-[#023e8a] to-[#0096c7] py-20 sm:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">

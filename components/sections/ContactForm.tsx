@@ -47,7 +47,7 @@ export function ContactForm() {
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className="bg-dark-elevated rounded-2xl border border-dark-border p-6 sm:p-7 flex flex-col gap-4"
+            className="bg-gradient-to-br from-brand-mid to-[#0891b2] rounded-2xl border border-brand-primary/30 p-6 sm:p-7 flex flex-col gap-4"
           >
             {/* Nombre */}
             <div>
@@ -103,7 +103,7 @@ export function ContactForm() {
                 type="checkbox"
                 className="mt-0.5 accent-brand-primary"
               />
-              <span className="text-xs text-slate-400 leading-relaxed">
+              <span className="text-xs text-slate-300 leading-relaxed">
                 Acepto la{" "}
                 <a href="/privacidad" className="text-brand-link hover:underline" target="_blank">
                   política de privacidad

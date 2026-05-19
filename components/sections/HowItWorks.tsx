@@ -5,18 +5,21 @@ const STEPS = [
   {
     number: "01",
     title: "El dispositivo mide",
+    highlight: undefined as string | undefined,
     image: IMAGES.device,
     text: "El biosensor registra continuamente SpO2, frecuencia cardíaca e índice de perfusión. Inalámbrico, pequeño, no invasivo.",
   },
   {
     number: "02",
     title: "La IA Hortensia analiza",
+    highlight: "Hortensia" as string | undefined,
     image: IMAGES.ai_report,
     text: "Nuestro motor de inteligencia artificial detecta patrones, anticipa deterioro y genera alertas antes de que los síntomas sean evidentes.",
   },
   {
     number: "03",
     title: "Tú decides",
+    highlight: undefined as string | undefined,
     image: IMAGES.dashboard,
     text: "Recibes alertas en tiempo real. Consultas informes en lenguaje claro. Actúas con datos objetivos en la mano.",
   },
@@ -47,13 +50,14 @@ export function HowItWorks() {
                 ].join(" ")}
               >
                 {/* Image */}
-                <div className="w-full md:w-1/2 relative aspect-[4/3] rounded-2xl overflow-hidden bg-dark-card border border-dark-border">
+                <div className="w-full md:w-2/5 rounded-2xl overflow-hidden bg-dark-card border border-dark-border">
                   <Image
                     src={step.image.src}
                     alt={step.image.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="w-full h-auto"
                   />
                 </div>
 
@@ -65,7 +69,13 @@ export function HowItWorks() {
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-3">
-                    {step.title}
+                    {step.highlight
+                      ? step.title.split(step.highlight).flatMap((part, i, arr) =>
+                          i < arr.length - 1
+                            ? [part, <span key={i} className="text-ai">{step.highlight}</span>]
+                            : [part]
+                        )
+                      : step.title}
                   </h3>
                   <p className="text-slate-400 text-base leading-relaxed">
                     {step.text}

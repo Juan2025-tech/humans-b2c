@@ -42,7 +42,7 @@ export function Navbar() {
           aria-label="HUMANS Home — ir al inicio"
         >
           <span className="text-brand-primary">
-            HUMANS Home
+            HUMANS
           </span>
         </button>
 

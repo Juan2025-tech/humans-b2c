@@ -63,7 +63,7 @@ export function WaitlistForm() {
   }
 
   return (
-    <section id="lista-espera" className="bg-dark-card py-20 sm:py-24">
+    <section id="lista-espera" className="bg-gradient-to-br from-slate-900 to-slate-700 py-20 sm:py-24">
       <div className="max-w-xl mx-auto px-4 sm:px-6">
 
         {!done ? (
