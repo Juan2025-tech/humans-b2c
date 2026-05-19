@@ -8,7 +8,7 @@ export const IMAGES = {
 
   // HERO — imagen o video principal del producto
   hero: {
-    src:  "/images/hero/product-hero.jpg",
+    src:  "/images/hero/product-hero.jpeg",
     alt:  "HUMANS — monitorización de signos vitales en el hogar",
     type: "image" as "image" | "video",
     // Para video loop: type: "video", src: "/images/hero/product-loop.mp4"
@@ -18,7 +18,7 @@ export const IMAGES = {
 
   // DISPOSITIVO — foto del BerryMed PPG
   device: {
-    src: "/images/product/device.png",
+    src: "/images/product/Monitorizacion_continua.png",
     alt: "Dispositivo HUMANS BerryMed — pulsioxímetro inalámbrico",
     // Tamaño recomendado: 800×800 WebP, fondo blanco o transparente
     placeholder: "https://placehold.co/800x800/1E293B/00B4D8?text=BerryMed+PPG",

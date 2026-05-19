@@ -34,7 +34,7 @@ const SUB_SECTIONS = [
 
 export function Product() {
   return (
-    <section id="el-producto" className="bg-dark-bg py-20 sm:py-24">
+    <section id="el-producto" className="bg-gradient-to-br from-[#240046] to-[#5a189a] py-20 sm:py-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
