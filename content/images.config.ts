@@ -8,7 +8,7 @@ export const IMAGES = {
 
   // HERO — imagen o video principal del producto
   hero: {
-    src:  "/images/hero/product-hero.jpeg",
+    src:  "/images/hero/product-hero2.jpeg",
     alt:  "HUMANS — monitorización de signos vitales en el hogar",
     type: "image" as "image" | "video",
     // Para video loop: type: "video", src: "/images/hero/product-loop.mp4"
@@ -26,15 +26,23 @@ export const IMAGES = {
 
   // DASHBOARD — captura del panel de vitales
   dashboard: {
-    src: "/images/product/dashboard.jpg",
+    src: "/images/product/dashboard.jpeg",
     alt: "Panel HUMANS mostrando SpO2 y frecuencia cardíaca en tiempo real",
     // Tamaño recomendado: 1200×700 WebP
     placeholder: "https://placehold.co/1200x700/0F172A/22C55E?text=Dashboard+HUMANS",
   },
 
+  // PRODUCTO CENTRAL — imagen única de la sección "El Producto"
+  product_central: {
+    src: "/images/product/product-central.jpeg",
+    alt: "Dispositivo HUMANS con app — monitorización de signos vitales en el hogar",
+    // Tamaño recomendado: 1200×675 (16:9) JPG/WebP
+    placeholder: "https://placehold.co/1200x675/1E293B/00B4D8?text=HUMANS+Product",
+  },
+
   // INFORME IA — ejemplo de informe generado por Motor Hortensia
   ai_report: {
-    src: "/images/product/ai-report.jpg",
+    src: "/images/product/ai-report.jpeg",
     alt: "Informe clínico generado automáticamente por HUMANS",
     placeholder: "https://placehold.co/1200x700/0F172A/7c3aed?text=Informe+IA+Hortensia",
   },

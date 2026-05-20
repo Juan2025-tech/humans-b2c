@@ -35,12 +35,9 @@ export function ContactForm() {
     <section id="contacto" className="bg-dark-card py-20 sm:py-24">
       <div className="max-w-xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
             ¿Tienes alguna pregunta?
           </h2>
-          <p className="text-slate-400">
-            Escríbenos. Respondemos en menos de 24 horas.
-          </p>
         </div>
 
         {!done ? (
@@ -103,12 +100,12 @@ export function ContactForm() {
                 type="checkbox"
                 className="mt-0.5 accent-brand-primary"
               />
-              <span className="text-xs text-slate-300 leading-relaxed">
+              <span className="text-xs text-white leading-relaxed">
                 Acepto la{" "}
-                <a href="/privacidad" className="text-brand-link hover:underline" target="_blank">
+                <a href="/privacidad" className="text-white underline hover:text-white/80" target="_blank">
                   política de privacidad
                 </a>
-                <span className="text-clinical-critical"> *</span>
+                <span className="text-white"> *</span>
               </span>
             </label>
             {errors.rgpd && (
@@ -134,9 +131,9 @@ export function ContactForm() {
               Mensaje recibido
             </h3>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Te respondemos en menos de 24 horas. También puedes escribirnos directamente a{" "}
-              <a href="mailto:hola@humans-tech.com" className="text-brand-link hover:underline">
-                hola@humans-tech.com
+              Te respondemos lo antes posible. También puedes escribirnos directamente a{" "}
+              <a href="mailto:info@humans-tech.com" className="text-brand-link hover:underline">
+                info@humans-tech.com
               </a>
               .
             </p>
