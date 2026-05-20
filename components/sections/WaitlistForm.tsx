@@ -7,10 +7,6 @@ import { waitlistSchema, PARA_QUIEN_OPTIONS, type WaitlistInput } from "@/lib/va
 import { WaitlistCounter } from "@/components/shared/WaitlistCounter";
 import { readStoredUTM } from "@/lib/utm";
 
-const WHATSAPP_TEXT = encodeURIComponent(
-  "He reservado mi plaza en HUMANS, monitorización de signos vitales para el hogar. Si cuidas a alguien, apúntate: https://humans-tech.com",
-);
-const LINKEDIN_URL = encodeURIComponent("https://humans-tech.com");
 
 export function WaitlistForm() {
   const [done,      setDone]      = useState(false);
@@ -209,27 +205,9 @@ export function WaitlistForm() {
                 <span className="text-brand-secondary font-bold text-lg">#{position}</span>.
               </p>
             )}
-            <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+            <p className="text-slate-400 text-sm leading-relaxed">
               Te escribiremos en cuanto tu acceso esté listo. Sin tarjeta de crédito, sin compromiso.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href={`https://wa.me/?text=${WHATSAPP_TEXT}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-social-whatsapp hover:bg-social-whatsapp-hover text-white text-sm font-semibold px-5 py-3 rounded-xl transition-colors"
-              >
-                Compartir en WhatsApp
-              </a>
-              <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${LINKEDIN_URL}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-social-linkedin hover:bg-social-linkedin-hover text-white text-sm font-semibold px-5 py-3 rounded-xl transition-colors"
-              >
-                Compartir en LinkedIn
-              </a>
-            </div>
           </div>
         )}
       </div>

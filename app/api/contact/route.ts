@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import { sql } from "@/lib/db";
 import { contactSchema } from "@/lib/validations";
 import { rateLimit, ipKey } from "@/lib/rateLimit";
-import { sendContactConfirmation } from "@/lib/email";
-import { resend, FOUNDER } from "@/lib/email";
+import { sendContactConfirmation, sendMail, FOUNDER } from "@/lib/email";
 
 async function hashIP(ip: string): Promise<string> {
   const salt   = process.env.IP_HASH_SALT ?? "humans-salt";
@@ -49,8 +48,7 @@ export async function POST(req: Request) {
   // 4. Notificaciones en paralelo
   void Promise.allSettled([
     sendContactConfirmation({ to: email, nombre }),
-    resend().emails.send({
-      from:    `HUMANS Contacto <${FOUNDER()}>`,
+    sendMail({
       to:      FOUNDER(),
       subject: `Pregunta de contacto: ${nombre}`,
       html: `

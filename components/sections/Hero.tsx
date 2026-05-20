@@ -9,10 +9,6 @@ import { readStoredUTM } from "@/lib/utm";
 
 type Step = "email" | "profile" | "done";
 
-const WHATSAPP_TEXT = encodeURIComponent(
-  "He reservado mi plaza en HUMANS, el sistema de monitorización de signos vitales para el hogar. Si cuidas a alguien, échale un vistazo: https://humans-tech.com",
-);
-const LINKEDIN_URL = encodeURIComponent("https://humans-tech.com");
 
 export function Hero() {
   const [step,      setStep]      = useState<Step>("email");
@@ -204,28 +200,10 @@ export function Hero() {
                   en la lista.
                 </p>
               )}
-              <p className="text-slate-400 text-sm mb-5">
+              <p className="text-slate-400 text-sm">
                 Te escribiremos a{" "}
                 <span className="text-white">{email}</span> cuando tu acceso esté listo.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <a
-                  href={`https://wa.me/?text=${WHATSAPP_TEXT}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-social-whatsapp hover:bg-social-whatsapp-hover text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors"
-                >
-                  Compartir en WhatsApp
-                </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${LINKEDIN_URL}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-social-linkedin hover:bg-social-linkedin-hover text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors"
-                >
-                  Compartir en LinkedIn
-                </a>
-              </div>
             </div>
           )}
         </div>

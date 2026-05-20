@@ -38,52 +38,61 @@ export async function POST(req: Request) {
   }
 
   const { nombre, email, telefono, para_quien, plan_interes } = parsed.data;
-  const utm      = extractUTM(req);
-  const ip_hash  = await hashIP(ip);
 
-  // 3. Deduplicar — email ya existe
-  const existingRows = await sql<WaitlistRow>(
-    `SELECT id FROM "Waitlist" WHERE email = $1 LIMIT 1`,
-    [email]
-  );
-  if (existingRows[0]) {
-    const [{ count }] = await sql<{ count: number }>(
+  try {
+    const utm     = extractUTM(req);
+    const ip_hash = await hashIP(ip);
+    // 3. Deduplicar — email ya existe
+    const existingRows = await sql<WaitlistRow>(
+      `SELECT id FROM "Waitlist" WHERE email = $1 LIMIT 1`,
+      [email]
+    );
+    if (existingRows[0]) {
+      const [{ count }] = await sql<{ count: number }>(
+        `SELECT COUNT(*)::int AS count FROM "Waitlist"`
+      );
+      return NextResponse.json({ success: true, position: count, already: true });
+    }
+
+    // 4. Guardar en BD (el lead no se pierde aunque fallen las notificaciones)
+    const [lead] = await sql<WaitlistRow>(
+      `INSERT INTO "Waitlist"
+         (id, nombre, email, telefono, para_quien, plan_interes, fuente, utm_medium, utm_campaign, referrer, ip_hash, rgpd)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+       RETURNING *`,
+      [
+        crypto.randomUUID(),
+        nombre,
+        email,
+        telefono ?? null,
+        para_quien,
+        plan_interes ?? null,
+        utm.fuente,
+        utm.utm_medium,
+        utm.utm_campaign,
+        utm.referrer,
+        ip_hash,
+        true,
+      ]
+    );
+
+    const [{ count: position }] = await sql<{ count: number }>(
       `SELECT COUNT(*)::int AS count FROM "Waitlist"`
     );
-    return NextResponse.json({ success: true, position: count, already: true });
+
+    // 5. Notificaciones en paralelo — no bloquean la respuesta
+    void Promise.allSettled([
+      sendWaitlistConfirmation({ to: email, nombre, position }),
+      notifyFounder({ nombre, email, para_quien, fuente: utm.fuente, position }),
+    ]);
+
+    return NextResponse.json({ success: true, position, id: lead!.id });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("[waitlist] error:", msg);
+    return NextResponse.json(
+      { error: "No se pudo completar el registro. Inténtalo de nuevo." },
+      { status: 500 },
+    );
   }
-
-  // 4. Guardar en BD (el lead no se pierde aunque fallen las notificaciones)
-  const [lead] = await sql<WaitlistRow>(
-    `INSERT INTO "Waitlist"
-       (id, nombre, email, telefono, para_quien, plan_interes, fuente, utm_medium, utm_campaign, referrer, ip_hash, rgpd)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
-     RETURNING *`,
-    [
-      crypto.randomUUID(),
-      nombre,
-      email,
-      telefono ?? null,
-      para_quien,
-      plan_interes ?? null,
-      utm.fuente,
-      utm.utm_medium,
-      utm.utm_campaign,
-      utm.referrer,
-      ip_hash,
-      true,
-    ]
-  );
-
-  const [{ count: position }] = await sql<{ count: number }>(
-    `SELECT COUNT(*)::int AS count FROM "Waitlist"`
-  );
-
-  // 5. Notificaciones en paralelo — no bloquean la respuesta
-  void Promise.allSettled([
-    sendWaitlistConfirmation({ to: email, nombre, position }),
-    notifyFounder({ nombre, email, para_quien, fuente: utm.fuente, position }),
-  ]);
-
-  return NextResponse.json({ success: true, position, id: lead!.id });
 }
