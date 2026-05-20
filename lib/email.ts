@@ -152,7 +152,7 @@ export async function sendContactConfirmation(params: {
         </div>
         <div style="padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 8px 8px">
           <h2 style="margin-top:0">Gracias, ${params.nombre}</h2>
-          <p>Hemos recibido tu mensaje y te responderemos en menos de 24 horas.</p>
+          <p>Hemos recibido tu mensaje y te responderemos lo antes posible.</p>
           <p>Si tienes más preguntas, escríbenos a
             <a href="mailto:${FOUNDER()}" style="color:#1B4F8A">${FOUNDER()}</a>.
           </p>

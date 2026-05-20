@@ -2,6 +2,7 @@ import { Navbar }       from "@/components/sections/Navbar";
 import { Hero }         from "@/components/sections/Hero";
 import { SocialProof }  from "@/components/sections/SocialProof";
 import { HowItWorks }   from "@/components/sections/HowItWorks";
+import { UseCase }      from "@/components/sections/UseCase";
 import { ForWhom }      from "@/components/sections/ForWhom";
 import { Product }      from "@/components/sections/Product";
 import { WaitlistForm } from "@/components/sections/WaitlistForm";
@@ -20,6 +21,7 @@ export default function HomePage() {
         <Hero />
         <SocialProof />
         <HowItWorks />
+        <UseCase />
         <ForWhom />
         <Product />
         <WaitlistForm />

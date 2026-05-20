@@ -8,45 +8,54 @@ const PARAMS = [
   { label: "Tendencias", desc: "IA detecta cambios antes", color: "text-ai",              border: "border-ai/30",              bg: "bg-ai/10" },
 ];
 
-const SUB_SECTIONS = [
+const FEATURES = [
   {
-    image:    IMAGES.device,
-    title:    "Pequeño. Inalámbrico. De precisión clínica.",
-    text:     "El biosensor PPG mide de forma continua sin molestar a tu familiar. Funciona mientras duerme, descansa o realiza su vida normal.",
-    badge:    null,
-    reverse:  false,
+    title: "Pequeño. Inalámbrico. De precisión clínica.",
+    text:  "El biosensor PPG mide de forma continua sin molestar a tu familiar. Funciona mientras duerme, descansa o realiza su vida normal.",
+    badge: null,
   },
   {
-    image:    IMAGES.dashboard,
-    title:    "Todo visible de un vistazo.",
-    text:     "Accede al estado de tu familiar desde cualquier dispositivo — móvil, tablet u ordenador. Historial, tendencias y alertas en un panel claro.",
-    badge:    null,
-    reverse:  true,
+    title: "Todo visible de un vistazo.",
+    text:  "Accede al estado de tu familiar desde cualquier dispositivo — móvil, tablet u ordenador. Historial, tendencias y alertas en un panel claro.",
+    badge: null,
   },
   {
-    image:    IMAGES.ai_report,
-    title:    "Informes que entiende cualquiera.",
-    text:     "Cada semana recibes un informe generado por IA con lo más importante: el estado general, los momentos destacados y qué llevar al médico.",
-    badge:    "Powered by Motor Hortensia · IA clínica de HUMANS",
-    reverse:  false,
+    title: "Informes que entiende cualquiera.",
+    text:  "Cada semana recibes un informe generado por IA con lo más importante: el estado general, los momentos destacados y qué llevar al médico.",
+    badge: "Powered by Motor Hortensia · IA clínica de HUMANS",
   },
 ];
 
 export function Product() {
   return (
-    <section id="el-producto" className="bg-gradient-to-br from-[#240046] to-[#5a189a] py-20 sm:py-24">
+    <section id="el-producto" className="bg-gradient-to-br from-[#0f1117] to-[#1e2330] py-20 sm:py-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
+
+        {/* Cabecera */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
             El producto
           </h2>
-          <p className="mt-3 text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="mt-3 text-white/70 text-lg max-w-xl mx-auto">
             Monitorización continua de los parámetros que importan.
           </p>
         </div>
 
+        {/* Imagen central */}
+        <div className="flex justify-center mb-10">
+          <div className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <Image
+              src={IMAGES.product_central.src}
+              alt={IMAGES.product_central.alt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+        </div>
+
         {/* Parámetros */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
           {PARAMS.map((p) => (
             <div
               key={p.label}
@@ -58,37 +67,24 @@ export function Product() {
           ))}
         </div>
 
-        {/* Sub-secciones */}
-        <div className="flex flex-col gap-20">
-          {SUB_SECTIONS.map((s) => (
+        {/* Features de texto */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {FEATURES.map((f) => (
             <div
-              key={s.title}
-              className={[
-                "flex flex-col md:flex-row items-center gap-8 md:gap-12",
-                s.reverse ? "md:flex-row-reverse" : "",
-              ].join(" ")}
+              key={f.title}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:bg-white/15 transition-colors"
             >
-              <div className="w-full md:w-1/2 relative aspect-video rounded-2xl overflow-hidden bg-dark-card border border-dark-border">
-                <Image
-                  src={s.image.placeholder}
-                  alt={s.image.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <div className="w-full md:w-1/2">
-                <h3 className="text-2xl font-bold text-white mb-3">{s.title}</h3>
-                <p className="text-slate-400 leading-relaxed mb-4">{s.text}</p>
-                {s.badge && (
-                  <span className="inline-block text-xs font-semibold text-ai border border-ai/30 bg-ai/10 px-3 py-1.5 rounded-full">
-                    {s.badge}
-                  </span>
-                )}
-              </div>
+              <h3 className="text-base font-bold text-white mb-2">{f.title}</h3>
+              <p className="text-sm text-white/70 leading-relaxed">{f.text}</p>
+              {f.badge && (
+                <span className="inline-block mt-4 text-xs font-semibold text-ai border border-ai/30 bg-ai/10 px-3 py-1.5 rounded-full">
+                  {f.badge}
+                </span>
+              )}
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
