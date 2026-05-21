@@ -8,7 +8,7 @@ export const IMAGES = {
 
   // HERO — imagen o video principal del producto
   hero: {
-    src:  "/images/hero/product-hero2.jpeg",
+    src:  "/images/hero/product-hero.png",
     alt:  "HUMANS — monitorización de signos vitales en el hogar",
     type: "image" as "image" | "video",
     // Para video loop: type: "video", src: "/images/hero/product-loop.mp4"
@@ -34,7 +34,7 @@ export const IMAGES = {
 
   // PRODUCTO CENTRAL — imagen única de la sección "El Producto"
   product_central: {
-    src: "/images/product/product-central.jpeg",
+    src: "/images/product/product-central.png",
     alt: "Dispositivo HUMANS con app — monitorización de signos vitales en el hogar",
     // Tamaño recomendado: 1200×675 (16:9) JPG/WebP
     placeholder: "https://placehold.co/1200x675/1E293B/00B4D8?text=HUMANS+Product",
@@ -45,6 +45,13 @@ export const IMAGES = {
     src: "/images/product/ai-report.jpeg",
     alt: "Informe clínico generado automáticamente por HUMANS",
     placeholder: "https://placehold.co/1200x700/0F172A/7c3aed?text=Informe+IA+Hortensia",
+  },
+
+  // CASO REAL — imagen del caso clínico
+  usecase_real: {
+    src: "/images/usecases/caso-real.png",
+    alt: "Caso real de monitorización HUMANS — detección temprana de sepsis",
+    placeholder: "https://placehold.co/1200x675/3a0068/FFFFFF?text=Caso+Real+HUMANS",
   },
 
   // CASOS DE USO — imágenes emocionales del público objetivo

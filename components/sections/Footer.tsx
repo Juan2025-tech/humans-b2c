@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const PRODUCT_LINKS = [
-  { label: "Cómo funciona", href: "#como-funciona" },
-  { label: "Para quién",    href: "#para-quien"    },
-  { label: "El producto",   href: "#el-producto"   },
-  { label: "Precios",       href: "#precios"       },
+  { label: "Cómo funciona", href: "#como-funciona", badge: null },
+  { label: "Para quién",    href: "#para-quien",    badge: null },
+  { label: "El producto",   href: "#el-producto",   badge: null },
+  { label: "Precios",       href: "#precios",       badge: "próximamente" },
 ];
 
 const LEGAL_LINKS = [
@@ -27,10 +27,10 @@ export function Footer() {
               Cuidado inteligente para quienes más quieres.
             </p>
             <a
-              href="mailto:hola@humans-tech.com"
+              href="mailto:info@humans-tech.com"
               className="inline-block mt-3 text-sm text-brand-primary hover:underline"
             >
-              hola@humans-tech.com
+              info@humans-tech.com
             </a>
           </div>
 
@@ -41,13 +41,16 @@ export function Footer() {
             </p>
             <ul className="flex flex-col gap-2">
               {PRODUCT_LINKS.map((l) => (
-                <li key={l.href}>
+                <li key={l.href} className="flex items-center gap-2">
                   <a
                     href={l.href}
                     className="text-sm text-slate-600 hover:text-brand-primary transition-colors"
                   >
                     {l.label}
                   </a>
+                  {l.badge && (
+                    <span className="text-xs text-slate-400 italic">{l.badge}</span>
+                  )}
                 </li>
               ))}
             </ul>

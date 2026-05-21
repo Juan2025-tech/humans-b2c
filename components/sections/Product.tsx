@@ -28,22 +28,22 @@ const FEATURES = [
 
 export function Product() {
   return (
-    <section id="el-producto" className="bg-gradient-to-br from-[#0f1117] to-[#1e2330] py-20 sm:py-24">
+    <section id="el-producto" className="bg-gradient-to-br from-white via-slate-100 to-blue-100 py-20 sm:py-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Cabecera */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
             El producto
           </h2>
-          <p className="mt-3 text-white/70 text-lg max-w-xl mx-auto">
+          <p className="mt-3 text-slate-500 text-lg max-w-xl mx-auto">
             Monitorización continua de los parámetros que importan.
           </p>
         </div>
 
         {/* Imagen central */}
         <div className="flex justify-center mb-10">
-          <div className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+          <div className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden border border-slate-200 shadow-2xl">
             <Image
               src={IMAGES.product_central.src}
               alt={IMAGES.product_central.alt}
@@ -62,7 +62,7 @@ export function Product() {
               className={`rounded-xl p-5 border text-center ${p.bg} ${p.border}`}
             >
               <p className={`text-2xl font-extrabold ${p.color}`}>{p.label}</p>
-              <p className="text-xs text-slate-300 mt-1 leading-snug">{p.desc}</p>
+              <p className="text-xs text-slate-500 mt-1 leading-snug">{p.desc}</p>
             </div>
           ))}
         </div>
@@ -72,10 +72,10 @@ export function Product() {
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 hover:bg-white/15 transition-colors"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200 p-6 hover:bg-white transition-colors shadow-sm"
             >
-              <h3 className="text-base font-bold text-white mb-2">{f.title}</h3>
-              <p className="text-sm text-white/70 leading-relaxed">{f.text}</p>
+              <h3 className="text-base font-bold text-slate-900 mb-2">{f.title}</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">{f.text}</p>
               {f.badge && (
                 <span className="inline-block mt-4 text-xs font-semibold text-ai border border-ai/30 bg-ai/10 px-3 py-1.5 rounded-full">
                   {f.badge}
