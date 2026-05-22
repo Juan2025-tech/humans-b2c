@@ -206,7 +206,7 @@ export function WaitlistForm() {
               </p>
             )}
             <p className="text-slate-400 text-sm leading-relaxed">
-              Te escribiremos en cuanto tu acceso esté listo. Sin tarjeta de crédito, sin compromiso.
+              Te escribiremos lo antes posible para darte toda la información necesaria. Sin tarjeta de crédito, sin compromiso.
             </p>
           </div>
         )}
