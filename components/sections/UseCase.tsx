@@ -3,14 +3,11 @@ import { IMAGES } from "@/content/images.config";
 
 export function UseCase() {
   return (
-    <section id="caso-de-uso" className="bg-gradient-to-br from-[#7b2fbe] to-[#c77dff] py-20 sm:py-24">
+    <section id="caso-de-uso" className="bg-gradient-to-br from-[#0d0118] via-[#1a0533] to-[#2d0a5e] py-20 sm:py-24">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
 
         {/* Cabecera */}
         <div className="text-center mb-10">
-          <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">
-            Caso de uso
-          </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
             Un caso real. Datos reales.<br className="hidden sm:block" /> Una familia que pudo actuar a tiempo.
           </h2>

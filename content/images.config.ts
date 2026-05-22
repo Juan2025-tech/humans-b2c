@@ -8,7 +8,7 @@ export const IMAGES = {
 
   // HERO — imagen o video principal del producto
   hero: {
-    src:  "/images/hero/product-hero.png",
+    src:  "/images/hero/product-hero-new.png",
     alt:  "HUMANS — monitorización de signos vitales en el hogar",
     type: "image" as "image" | "video",
     // Para video loop: type: "video", src: "/images/hero/product-loop.mp4"
@@ -18,7 +18,7 @@ export const IMAGES = {
 
   // DISPOSITIVO — foto del BerryMed PPG
   device: {
-    src: "/images/product/Monitorizacion_continua.png",
+    src: "/images/product/Monitorizacion-continua-new.png",
     alt: "Dispositivo HUMANS BerryMed — pulsioxímetro inalámbrico",
     // Tamaño recomendado: 800×800 WebP, fondo blanco o transparente
     placeholder: "https://placehold.co/800x800/1E293B/00B4D8?text=BerryMed+PPG",
@@ -26,7 +26,7 @@ export const IMAGES = {
 
   // DASHBOARD — captura del panel de vitales
   dashboard: {
-    src: "/images/product/dashboard.jpeg",
+    src: "/images/product/dashboard-new.png",
     alt: "Panel HUMANS mostrando SpO2 y frecuencia cardíaca en tiempo real",
     // Tamaño recomendado: 1200×700 WebP
     placeholder: "https://placehold.co/1200x700/0F172A/22C55E?text=Dashboard+HUMANS",
@@ -42,7 +42,7 @@ export const IMAGES = {
 
   // INFORME IA — ejemplo de informe generado por Motor Hortensia
   ai_report: {
-    src: "/images/product/ai-report.jpeg",
+    src: "/images/product/ai-report-new.png",
     alt: "Informe clínico generado automáticamente por HUMANS",
     placeholder: "https://placehold.co/1200x700/0F172A/7c3aed?text=Informe+IA+Hortensia",
   },
