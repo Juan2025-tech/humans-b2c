@@ -79,7 +79,7 @@ export function WaitlistForm() {
             <form
               onSubmit={handleSubmit(onSubmit)}
               noValidate
-              className="bg-dark-elevated rounded-2xl border border-dark-border p-6 sm:p-7 flex flex-col gap-4"
+              className="bg-gradient-to-br from-blue-500/30 to-sky-300/15 rounded-2xl border border-blue-300/20 p-6 sm:p-7 flex flex-col gap-4"
             >
               {/* Nombre */}
               <div>

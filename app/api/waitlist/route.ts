@@ -84,7 +84,13 @@ export async function POST(req: Request) {
     void Promise.allSettled([
       sendWaitlistConfirmation({ to: email, nombre, position }),
       notifyFounder({ nombre, email, para_quien, fuente: utm.fuente, position }),
-    ]);
+    ]).then((results) => {
+      results.forEach((r, i) => {
+        if (r.status === "rejected") {
+          console.error(`[waitlist] notificación ${i} falló:`, r.reason);
+        }
+      });
+    });
 
     return NextResponse.json({ success: true, position, id: lead!.id });
   } catch (err) {

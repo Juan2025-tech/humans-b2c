@@ -4,7 +4,13 @@ let _pool: Pool | undefined;
 
 function getPool(): Pool {
   if (!_pool) {
-    _pool = new Pool({ connectionString: process.env.DATABASE_URL!, max: 1 });
+    const url = process.env.DATABASE_URL!;
+    const isLocal = url.includes("localhost") || url.includes("127.0.0.1");
+    _pool = new Pool({
+      connectionString: url,
+      max: 1,
+      ssl: isLocal ? false : { rejectUnauthorized: false },
+    });
   }
   return _pool;
 }
