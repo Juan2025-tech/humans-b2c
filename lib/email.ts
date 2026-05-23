@@ -91,7 +91,7 @@ export async function sendWaitlistConfirmation(params: {
             </table>
 
             <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#334155">
-              Mientras tanto, <strong>tú no tienes que hacer nada</strong>. Te avisaremos en cuanto tu acceso esté listo.<br>
+              Mientras tanto, <strong>tú no tienes que hacer nada</strong>.<br>
               <span style="font-size:13px;color:#64748B">(Sin tarjeta de crédito por adelantado. Sin compromiso).</span>
             </p>
 

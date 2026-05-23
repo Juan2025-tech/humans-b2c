@@ -8,6 +8,7 @@ function getRedis(): Redis {
       lazyConnect: true,
       maxRetriesPerRequest: 1,
     });
+    redis.on("error", () => {});
   }
   return redis;
 }

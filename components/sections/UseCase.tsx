@@ -14,7 +14,7 @@ export function UseCase() {
         </div>
 
         {/* Narrativa */}
-        <div className="space-y-5 text-white/75 text-base leading-relaxed mb-10">
+        <div className="space-y-5 text-white/75 text-base leading-relaxed mb-10 text-justify hyphens-auto">
           <p>
             Las infecciones de orina en personas mayores son traicioneras: no siempre dan fiebre,
             no siempre se quejan. Cuando los síntomas se hacen visibles, el cuerpo lleva horas
@@ -67,7 +67,7 @@ export function UseCase() {
             que hacer nada. Es transformador."
           </p>
           <footer className="mt-3 text-white/50 text-xs font-medium not-italic">
-            — Profesional sanitario, ensayo clínico Feb. 2026
+            — Profesional sanitario, Feb. 2026
           </footer>
         </blockquote>
 

@@ -14,7 +14,7 @@ const PLANS = [
     featured:  false,
     features:  [
       "1 paciente",
-      "SpO2 + frecuencia cardíaca",
+      "saturación de oxígeno periférica SpO₂ + frecuencia cardíaca",
       "Alertas por email",
       "Historial 30 días",
     ],

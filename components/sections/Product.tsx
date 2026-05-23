@@ -2,7 +2,7 @@ import Image from "next/image";
 import { IMAGES } from "@/content/images.config";
 
 const PARAMS = [
-  { label: "SpO2",       desc: "Saturación de oxígeno",    color: "text-brand-secondary", border: "border-brand-secondary/30", bg: "bg-brand-secondary/10" },
+  { label: "SpO₂",       desc: "Saturación de oxígeno periférica",    color: "text-brand-secondary", border: "border-brand-secondary/30", bg: "bg-brand-secondary/10" },
   { label: "FC",         desc: "Frecuencia cardíaca",      color: "text-clinical-critical", border: "border-clinical-critical/30", bg: "bg-clinical-critical/10" },
   { label: "PI",         desc: "Índice de perfusión",      color: "text-clinical-normal", border: "border-clinical-normal/30", bg: "bg-clinical-normal/10" },
   { label: "Tendencias", desc: "IA detecta cambios antes", color: "text-ai",              border: "border-ai/30",              bg: "bg-ai/10" },
@@ -11,7 +11,7 @@ const PARAMS = [
 const FEATURES = [
   {
     title: "Pequeño. Inalámbrico. De precisión clínica.",
-    text:  "El biosensor PPG mide de forma continua sin molestar a tu familiar. Funciona mientras duerme, descansa o realiza su vida normal.",
+    text:  "El biosensor mide de forma continua sin molestar a tu familiar. Funciona mientras duerme, descansa o realiza su vida normal.",
     badge: null,
   },
   {
@@ -36,6 +36,9 @@ export function Product() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
             El producto
           </h2>
+          <p className="inline-block mt-3 bg-amber-400 border border-amber-500 text-amber-950 text-sm font-bold px-4 py-1.5 rounded-full tracking-wide">
+            ✓ Certificación médica CE MDR Clase IIa · Regulación Europea de Dispositivos Médicos
+          </p>
           <p className="mt-3 text-slate-500 text-lg max-w-xl mx-auto">
             Monitorización continua de los parámetros que importan.
           </p>

@@ -7,7 +7,7 @@ const STEPS = [
     title: "El dispositivo mide",
     highlight: undefined as string | undefined,
     image: IMAGES.device,
-    text: "El biosensor registra continuamente SpO2, frecuencia cardíaca e índice de perfusión. Inalámbrico, pequeño, no invasivo.",
+    text: "El biosensor registra continuamente saturación de oxígeno periférica SpO₂, frecuencia cardíaca e índice de perfusión. Inalámbrico, pequeño, no invasivo.",
   },
   {
     number: "02",
@@ -21,7 +21,7 @@ const STEPS = [
     title: "Tú decides",
     highlight: undefined as string | undefined,
     image: IMAGES.dashboard,
-    text: "Recibes alertas en tiempo real. Consultas informes en lenguaje claro. Actúas con datos objetivos en la mano.",
+    text: "Consultas informes en lenguaje claro. Actúas con datos objetivos en la mano.",
   },
 ];
 

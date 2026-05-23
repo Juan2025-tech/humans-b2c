@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "HUMANS monitoriza los signos vitales de tu familiar de forma continua y te avisa si algo cambia — antes de que los síntomas sean evidentes. Únete a la lista de espera.",
   keywords: [
     "monitorización signos vitales", "cuidado familiar", "pulsioxímetro",
-    "SpO2", "frecuencia cardíaca", "alerta médica hogar",
+    "saturación de oxígeno periférica SpO₂", "frecuencia cardíaca", "alerta médica hogar",
   ],
   authors: [{ name: "HUMANS" }],
   robots: { index: true, follow: true },
